@@ -1,25 +1,46 @@
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
 import './App.css';
+import Welcome from './components/Welcome';
+import Quiz from './components/Quiz';
 
 function App() {
+
+const [cards, setCards] = React.useState([])
+    
+  React.useEffect(()=>{
+    fetch("https://opentdb.com/api.php?amount=10&category=20&difficulty=easy")
+    .then(res=>res.json())
+    .then(data =>{
+      setCards(data.results.map(card => card ))
+    })} ,[])
+
+const [show, setShow] = React.useState(false)
+
+function startQuiz() {
+  setShow(prevShow => !prevShow)
+}
+
+function shit(){
+  console.log('click clak')
+}
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main className='background container'>
+     {!show && 
+      <Welcome 
+        startQuiz={()=> startQuiz()}/>
+    }
+
+     {show && 
+      <Quiz 
+        cards = {cards}
+        // button = {()=> shit()}
+     />
+     }
+
+    </main>
   );
 }
 
 export default App;
+
