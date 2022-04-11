@@ -24,7 +24,6 @@ fetch("https://opentdb.com/api.php?amount=10&encode=url3986")
     
     // Arranged data into the format that can be easily access 
     const arrangedData = data.results.map((data,index)=>{ 
-
       
       // Concat all answers into one array
       let optionsArray = data.incorrect_answers.concat(data.correct_answer)
@@ -64,6 +63,7 @@ fetch("https://opentdb.com/api.php?amount=10&encode=url3986")
     setCards
     ([ ...arrangedData]) 
   })} ,[])  
+
 
 const quizzes = cards.map(card =>{ 
         return ( 
@@ -113,14 +113,14 @@ const quizzes = cards.map(card =>{
     } 
 
     {!show1 &&  
-    <div class='container quiz'> 
+    <div className='container quiz'> 
     {quizzes}
 
-    <div class='footer checkAnswer'>
+    <div className='footer checkAnswer'>
     <button className='toggleBtn' onClick={checkAnswer}> Check answers </button>
     </div> 
 
-    <div class='footer restartGame'>
+    <div className='footer restartGame'>
       <h3>You score {score} /10 correct answers</h3>
       <button className='toggleBtn' onClick={restartGame}> Play again </button>
     </div>
@@ -133,7 +133,6 @@ const quizzes = cards.map(card =>{
     ); 
 
 } 
-
 
 
 export default App; 
