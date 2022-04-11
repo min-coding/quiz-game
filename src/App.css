@@ -1,30 +1,100 @@
-.background {
-  position: fixed;
-  display: block;
-  width: 100%;
-  height: 100%;
-  background-image: url(../public/assets/intro-page.jpg);
-  background-size: cover;
-  /* background-repeat: no-repeat; */
-  z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-}
 
-.container {
-  padding-top: 2rem;
+.container{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 0 auto;
+}
+
+.background {
+  width: 100%;
+  background-image: url(../public/assets/intro-page.jpg);
+  background-size: cover;
+}
+
+.toggleBtn{
+  font-size: 1rem;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  background: #4D5B9E;
+  padding: 1em 2.5em;
+  border: none;
+  color: white;
+  border-radius: 15px;
+  margin: 0 auto;
+}
+
+/* Welcome (First Page) */
+
+.welcome{
+  font-family: 'Inter';
+  font-weight: 400;
+  text-align: center;
+  height: 100vh;
+}
+
+.welcome h1{
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* Quiz */
+.quiz{
+  padding: 3em;
+}
+
+.question{
+  font-family: 'Karla';
+  font-style: normal;
+  font-weight: 700;
+  color: #293264;
+  font-size: 1.25rem;
+}
+
+.option{
+  text-align: center;
+  color: #293264;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 1rem;
+  border-radius: 15px;
+  border: 0.794239px solid #4D5B9E;
+  background-color: transparent;
+  margin-right: 1.5em;
+  padding: 0.5em 1.5em;
+}
+
+.option-container{
+display: flex;
+justify-content: flex-start;
 }
 
 .clicked {
-  background-color: purple;
+  background-color: #D6DBF5;
+  border: none;
 }
 
-.correct{
-
+.green{
+  background: #94D7A2;
+  border: none;
 }
 
-.wrong{
-  
+.red{
+  background: #F8BCBC;
 }
 
+.footer{
+  margin: 2em auto;
+  text-align: center;
+}
+
+.checkAnswer{
+display: block;
+}
+
+.restartGame{
+display: none;
+}
