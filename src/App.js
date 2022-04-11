@@ -18,12 +18,14 @@ function handleClick(){
 }
 
 React.useEffect(()=>{ 
-fetch("https://opentdb.com/api.php?amount=10") 
+fetch("https://opentdb.com/api.php?amount=10&encode=url3986") 
 .then(res=>res.json()) 
 .then(data =>{ 
+    
     // Arranged data into the format that can be easily access 
     const arrangedData = data.results.map((data,index)=>{ 
-    
+
+      
       // Concat all answers into one array
       let optionsArray = data.incorrect_answers.concat(data.correct_answer)
       
@@ -35,9 +37,12 @@ fetch("https://opentdb.com/api.php?amount=10")
           arr.push(r);
         }
       }
-
-      // Reassign switched value to optionsArray 
-      optionsArray = arr.map(item=> optionsArray[item])
+      
+      // Reassign switched value to optionsArray & convert options to string
+      optionsArray = arr.map(item=> decodeURIComponent(optionsArray[item]))
+      
+      // Convert encoded question to string to prevent bug
+      data.question=decodeURIComponent(data.question)
 
       const options = [] 
       for(let i=0; i<optionsArray.length; i++){ 
