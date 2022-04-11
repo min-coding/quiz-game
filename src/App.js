@@ -10,7 +10,7 @@ const [score, setScore] = React.useState(0)
 const [isClicked, setIsClicked] = React.useState(false) 
 
 function addScore(){ 
-setScore(prev=> prev+1) 
+  setScore(prev=> prev+1) 
 } 
 
 function handleClick(){
@@ -18,28 +18,43 @@ function handleClick(){
 }
 
 React.useEffect(()=>{ 
-fetch("https://opentdb.com/api.php?amount=10&category=20&difficulty=easy") 
+fetch("https://opentdb.com/api.php?amount=10") 
 .then(res=>res.json()) 
 .then(data =>{ 
     // Arranged data into the format that can be easily access 
     const arrangedData = data.results.map((data,index)=>{ 
-    const optionsArray = data.incorrect_answers.concat(data.correct_answer) 
-    const options = [] 
-    for(let i=0; i<optionsArray.length; i++){ 
-      options.push( 
-      { 
-      key:Math.floor(Math.random()*9999), 
-      value:optionsArray[i], 
-      isClicked:false
+    
+      // Concat all answers into one array
+      let optionsArray = data.incorrect_answers.concat(data.correct_answer)
+      
+      // Random index to switch position of correct answer
+      const arr = [];
+      while (arr.length < optionsArray.length) {
+        const r = Math.floor(Math.random() * optionsArray.length);
+        if (arr.indexOf(r) === -1) {
+          arr.push(r);
+        }
+      }
+
+      // Reassign switched value to optionsArray 
+      optionsArray = arr.map(item=> optionsArray[item])
+
+      const options = [] 
+      for(let i=0; i<optionsArray.length; i++){ 
+        options.push( 
+        { 
+        key:Math.floor(Math.random()*9999), 
+        value:optionsArray[i], 
+        isClicked:false
+        } 
+        ) 
       } 
-      ) 
-    } 
-    return ( 
-        {...data, 
-        id:index, 
-        allOptions: options 
-        }  
-      ) 
+      return ( 
+          {...data, 
+          id:index, 
+          allOptions: options 
+          }  
+        ) 
     }) 
     setCards
     ([ ...arrangedData]) 
@@ -101,7 +116,7 @@ const quizzes = cards.map(card =>{
     </div> 
 
     <div class='footer restartGame'>
-      <h3>You score {score}/10 correct answers</h3>
+      <h3>You score {score} /10 correct answers</h3>
       <button className='toggleBtn' onClick={restartGame}> Play again </button>
     </div>
 
@@ -114,6 +129,6 @@ const quizzes = cards.map(card =>{
 
 } 
 
- 
+
 
 export default App; 
