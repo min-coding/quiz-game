@@ -1,5 +1,4 @@
-
-.container{
+.container {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -12,12 +11,12 @@
   background-size: cover;
 }
 
-.toggleBtn{
+.toggleBtn {
   font-size: 1rem;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 500;
-  background: #4D5B9E;
+  background: #4d5b9e;
   padding: 1em 2.5em;
   border: none;
   color: white;
@@ -27,25 +26,25 @@
 
 /* Welcome (First Page) */
 
-.welcome{
+.welcome {
   font-family: 'Inter';
   font-weight: 400;
   text-align: center;
   height: 100vh;
 }
 
-.welcome h1{
+.welcome h1 {
   font-family: 'Karla';
   font-style: normal;
   font-weight: 700;
 }
 
 /* Quiz */
-.quiz{
+.quiz {
   padding: 3em;
 }
 
-.question{
+.question {
   font-family: 'Karla';
   font-style: normal;
   font-weight: 700;
@@ -53,7 +52,12 @@
   font-size: 1.25rem;
 }
 
-.option{
+.option-container {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.option {
   text-align: center;
   color: #293264;
   font-family: 'Inter';
@@ -61,40 +65,31 @@
   font-weight: 500;
   font-size: 1rem;
   border-radius: 15px;
-  border: 0.794239px solid #4D5B9E;
+  border: 0.794239px solid #4d5b9e;
   background-color: transparent;
   margin-right: 1.5em;
   padding: 0.5em 1.5em;
 }
 
-.option-container{
-display: flex;
-justify-content: flex-start;
-}
+/* answer */
 
-.clicked {
-  background-color: #D6DBF5;
+.selected {
+  background-color: #d6dbf5;
   border: none;
 }
 
-.green{
-  background: #94D7A2;
+.correct {
+  background: #94d7a2;
   border: none;
 }
 
-.red{
-  background: #F8BCBC;
+.incorrect {
+  background: #f8bcbc;
 }
 
-.footer{
+/* footer */
+
+.footer {
   margin: 2em auto;
   text-align: center;
-}
-
-.checkAnswer{
-display: block;
-}
-
-.restartGame{
-display: none;
 }
