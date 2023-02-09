@@ -7,7 +7,7 @@
 
 .background {
   width: 100%;
-  background-image: url(../public/assets/intro-page.jpg);
+  background-image: url(/public/assets/intro-page.jpg);
   background-size: cover;
 }
 
