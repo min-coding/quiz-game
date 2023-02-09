@@ -1,6 +1,6 @@
-# Project description
+# Project description 
 
-This project is a solo project from Scrimba. It does not have solutions provided.
+This project is a solo final React project from Scrimba. It does not have solution provided.
 The complexity of this project includes several things such as
 
 - Data format from the API isn't ideal, so we need to manipulate the format (put answers together, decodeURI, random order)
